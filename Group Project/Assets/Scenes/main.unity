@@ -2219,7 +2219,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!28 &267891913
 Texture2D:
@@ -6166,7 +6166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!28 &708467891
 Texture2D:
@@ -9212,127 +9212,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1074922913
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 530398895869845251, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 530398895869845251, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 1067504451064283448, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 1067504451064283448, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 2307109690044377140, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 2307109690044377140, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 4784055291191924932, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 4784055291191924932, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 5423077336202093381, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 5423077336202093381, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 5542182669020994988, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_Name
-      value: House
-      objectReference: {fileID: 0}
-    - target: {fileID: 5577639588588987529, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 1769109734}
-    - target: {fileID: 5577639588588987535, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 28.243412
-      objectReference: {fileID: 0}
-    - target: {fileID: 5577639588588987535, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7888107
-      objectReference: {fileID: 0}
-    - target: {fileID: 5577639588588987535, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 38.88002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6195929191085921032, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: furnitureTextures
-      value: 
-      objectReference: {fileID: 266549324}
-    - target: {fileID: 6195929191085921032, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: GlobalOptionsDisplaySaveVar
-      value: 
-      objectReference: {fileID: 266549325}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366501475536189065, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 43be88577d0195c4dbf9cd039ac25cf2, type: 3}
 --- !u!28 &1081249406
 Texture2D:
   m_ObjectHideFlags: 0
@@ -13751,42 +13630,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!84 &1769109734
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: MirrorFrame's RenderTexture.
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 748
-  m_Height: 748
-  m_AntiAliasing: 8
-  m_MipCount: -1
-  m_DepthFormat: 0
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!28 &1769320219
 Texture2D:
   m_ObjectHideFlags: 0
