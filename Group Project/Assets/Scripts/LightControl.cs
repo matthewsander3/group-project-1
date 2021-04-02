@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LightControl : MonoBehaviour
 {
- 
+    public int speed = 150;
     void Update()
     {
-        transform.Rotate(1,0,0 * Time.deltaTime);
+        transform.Rotate(Time.deltaTime * speed, 0,0)  ;
     }
 }

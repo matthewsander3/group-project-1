@@ -5545,8 +5545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c000605f8eaf13644910ed60c78a36bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene:
-    m_Handle: 0
 --- !u!28 &687306422
 Texture2D:
   m_ObjectHideFlags: 0
@@ -9434,6 +9432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc87499ece6fc8a43875bd16dec78e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 75
 --- !u!28 &1236547727
 Texture2D:
   m_ObjectHideFlags: 0

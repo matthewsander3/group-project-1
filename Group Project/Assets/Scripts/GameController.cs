@@ -10,9 +10,11 @@ public class GameController : MonoBehaviour
 {
     public int health = 100;
     public int speed = 10;
-    //public int timer = 60;
+    public int timer = 60;
     bool paused = false;
-
+    [SerializeField] private Text timerText;
+    public GameObject empty;
+    public GameObject alive;
     //[SerializeField] private Text healthText;
 
     // Start is called before the first frame update
@@ -21,22 +23,23 @@ public class GameController : MonoBehaviour
         //load info
         health = PlayerPrefs.GetInt("PlayerHealth", 100);
         speed = PlayerPrefs.GetInt("PlayerSpeed", 10);
-        //StartCoroutine("CountDown");
+        StartCoroutine("CountDown");
     }
 
-    /*
+    
     IEnumerator CountDown()
     {
         while (timer > 0)
         {
+            timerText.text = "Timer: " + timer;
             //wait for a second
             yield return new WaitForSeconds(1);
             timer--;
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
         GameToDeath();
     }
-    */
+    
 
     private void ChangeLevel()
     {
@@ -56,34 +59,10 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void MenuToGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
     public void GameToDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void DeathToGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
-
-    public void DeathToMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-    }
-
-    public void GameOver()
-    {
-        Debug.Log("GAME OVER!");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        alive.SetActive(false);
+        empty.SetActive(true);
     }
 
     public void PauseUnpause()
