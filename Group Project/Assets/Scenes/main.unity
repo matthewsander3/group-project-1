@@ -2949,7 +2949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -574, y: 229.58926}
+  m_AnchoredPosition: {x: -502, y: 229.58926}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &332738488
@@ -4557,7 +4557,7 @@ GameObject:
   - component: {fileID: 472869873}
   - component: {fileID: 472869872}
   m_Layer: 5
-  m_Name: Sanity
+  m_Name: SanityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4579,7 +4579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -580, y: -264}
+  m_AnchoredPosition: {x: -494, y: -264}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472869872
@@ -5493,7 +5493,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 10
-  timer: 10
+  timerMin: 50
+  timerHour: 12
+  endTime: 2
+  meridian: P.M.
+  endMeridian: A.M.
   timerText: {fileID: 332738488}
   empty: {fileID: 1598546990}
   alive: {fileID: 475397196}
@@ -6932,7 +6936,7 @@ GameObject:
   - component: {fileID: 713161408}
   - component: {fileID: 713161409}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SanitySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6957,8 +6961,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.973206, y: -282.91074}
-  m_SizeDelta: {x: 1320, y: 50}
+  m_AnchoredPosition: {x: -14, y: -282.91074}
+  m_SizeDelta: {x: 1140, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713161409
 MonoBehaviour:
@@ -7010,7 +7014,19 @@ MonoBehaviour:
   m_Value: 88
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549144330}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!28 &713533057
 Texture2D:
   m_ObjectHideFlags: 0
@@ -10485,7 +10501,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -14424,7 +14440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1598546991
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16861,14 +16877,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99831486, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.014223099, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

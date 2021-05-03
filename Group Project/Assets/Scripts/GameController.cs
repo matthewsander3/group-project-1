@@ -10,7 +10,13 @@ public class GameController : MonoBehaviour
 {
     public int health = 100;
     public int speed = 10;
-    public int timer = 60;
+
+    public int timerMin = 0;
+    public int timerHour = 8;
+    [SerializeField] private int endTime;
+    [SerializeField] private string meridian;
+    [SerializeField] private string endMeridian;
+
     bool paused = false;
     [SerializeField] private Text timerText;
     public GameObject empty;
@@ -29,12 +35,37 @@ public class GameController : MonoBehaviour
     
     IEnumerator CountDown()
     {
-        while (timer > 0)
+        while (meridian != endMeridian)
         {
-            timerText.text = "Timer: " + timer;
-            //wait for a second
-            yield return new WaitForSeconds(1);
-            timer--;
+            while (timerMin < 60)
+            {
+                if (timerMin <= 9)
+                {
+                    timerText.text = timerHour.ToString() + ":0" + timerMin.ToString();
+                }
+                else
+                {
+                    timerText.text = timerHour.ToString() + ":" + timerMin.ToString();
+                }
+                //wait for a second
+                yield return new WaitForSeconds(1);
+                timerMin++;
+            }
+            timerMin = 0;
+            if(timerHour + 1 > 12)
+            {
+                timerHour = 1;
+                if(meridian == "P.M.")
+                {
+                    meridian = "A.M.";
+                }
+                else
+                {
+                    meridian = "P.M.";
+                }
+            }
+            else
+                timerHour++;
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
         GameToDeath();
