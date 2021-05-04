@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene_Manager : MonoBehaviour
+public class Scene_Manager : MonoBehaviour 
 {
     // Start is called before the first frame update
     public void NextScene()
@@ -11,7 +11,7 @@ public class Scene_Manager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-     public void quitGame()
+    public void quitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
