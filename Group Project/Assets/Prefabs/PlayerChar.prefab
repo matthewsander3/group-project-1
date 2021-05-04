@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 4659005359035523893}
   - component: {fileID: 4659005359025999061}
   - component: {fileID: 6730910582714515077}
-  - component: {fileID: 5830450122701673708}
+  - component: {fileID: 381141984517116495}
   m_Layer: 0
   m_Name: PlayerChar
   m_TagString: Untagged
@@ -388,9 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2b41935312c9345b3fa111b32de084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
-  speedH: 10
---- !u!136 &5830450122701673708
+  speed: 0
+--- !u!136 &381141984517116495
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,9 +400,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.0051682
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5025841, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4659005359035498263
 GameObject:
   m_ObjectHideFlags: 0
