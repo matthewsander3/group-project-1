@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private Text timerText;
     public GameObject empty;
     public GameObject alive;
+
+
+
     //[SerializeField] private Text healthText;
 
     // Start is called before the first frame update
@@ -35,7 +38,7 @@ public class GameController : MonoBehaviour
     
     IEnumerator CountDown()
     {
-        while (meridian != endMeridian)
+        while (timerHour < endTime && meridian != endMeridian)
         {
             while (timerMin < 60)
             {
