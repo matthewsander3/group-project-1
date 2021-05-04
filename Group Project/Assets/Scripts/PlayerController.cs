@@ -6,6 +6,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    [SerializeField] private Animator anim;
+    [SerializeField] private GameController gameController;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+
+        if (!gameController)
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
 
     private void Update()
     {
@@ -19,6 +29,14 @@ public class PlayerController : MonoBehaviour
 
         Vector3 playerMovement = new Vector3(hor, 0.0f, ver).normalized * speed * Time.deltaTime;
         transform.Translate(playerMovement, Space.Self);
+
+        anim.SetFloat("walkspeed", Input.GetAxis("Vertical") * (Input.GetKey(KeyCode.UpArrow) ? 0.5f : 1f));
+        anim.SetFloat("strafeSpeed", Input.GetAxis("Horizontal"));
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            anim.SetTrigger("Interact");
+        }
     }
 
 }
