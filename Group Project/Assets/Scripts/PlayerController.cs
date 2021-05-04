@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private Animator anim;
+
     private float yaw = 0.0f;
     //private float pitch = 0.0f;
     public float speedH = 10.0f;
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         if (!gameController)
             gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
@@ -29,6 +33,14 @@ public class PlayerController : MonoBehaviour
         movementDirection.Normalize();
 
         transform.Translate(movementDirection * gameController.speed * Time.deltaTime, Space.Self);
+
+        anim.SetFloat("walkSpeed", Input.GetAxis("Vertical") * (Input.GetKey(KeyCode.UpArrow) ? 0.5f : 1f));
+        anim.SetFloat("strafeSpeed", Input.GetAxis("Horizontal"));
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            anim.SetTrigger("interact");
+        }
 
         /* rotate the view with the mouse */
         yaw += speedH * Input.GetAxis("Mouse X");
