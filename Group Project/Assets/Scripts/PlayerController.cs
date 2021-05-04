@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("walkSpeed", Input.GetAxis("Vertical") * (Input.GetKey(KeyCode.UpArrow) ? 0.5f : 1f));
         anim.SetFloat("strafeSpeed", Input.GetAxis("Horizontal"));
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             anim.SetTrigger("interact");
         }
