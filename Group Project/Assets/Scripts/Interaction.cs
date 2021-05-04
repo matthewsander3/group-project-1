@@ -5,47 +5,94 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    //text that appears when interactable is pointed at, within a certain distance
-    [SerializeField] private Text intText;
-    //distance threshold for interaction text
-    public float intDistance = 5.0f;
+    //distance threshold
+    [SerializeField] float intDistance;
+    private IInteractable currTarget;
+    private Camera mainCamera;
 
-    private void Start()
+    private void Awake()
     {
-        //turns off text that isn't already off
-        intText.gameObject.SetActive(false);
+        mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //creates a ray from the camera out
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastForInteractable();
 
-        //info about raycast hits
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, intDistance))
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            // Optional visualization of the ray.
-            Debug.DrawRay(ray.origin, ray.direction * intDistance, Color.red);
-
-            if (hit.collider.tag == "Interactable")
+            if(currTarget != null)
             {
-                //turn on the int prompt
-                intText.gameObject.SetActive(true);
+                currTarget.OnInteract();
+            }
+        }
+    }
 
-                /*
-                //interaction on button press, fill this in later
-                if(Input.GetButtonDown("InteractionButton"))
+    private void RaycastForInteractable()
+    {
+        RaycastHit whatIHit;
+
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out whatIHit, intDistance))
+        {
+            IInteractable interactable = whatIHit.collider.GetComponent<IInteractable>();
+
+            if(interactable != null)
+            {
+                if(whatIHit.distance <= interactable.MaxRange)
                 {
-                    //do something here, like animate poltergeist
+                    if(interactable == currTarget)
+                    {
+                        //keep looking at same interactable or noninteractable
+                        return;
+                    }
+                    else if(currTarget != null)
+                    {
+                        //looking at new interactable after looking at old interactable
+                        currTarget.OnEndHover();
+                        currTarget = interactable;
+                        currTarget.OnStartHover();
+                        return;
+                    }
+                    else
+                    {
+                        //look at interactable from non interactable
+                        currTarget = interactable;
+                        currTarget.OnStartHover();
+                        return;
+                    }
                 }
-                */
+                else
+                {
+                    //not looking at anything in range
+                    if(currTarget != null)
+                    {
+                        currTarget.OnEndHover();
+                        currTarget = null;
+                        return;
+                    }
+                }
             }
             else
             {
-                intText.gameObject.SetActive(false);
+                //not looking at anything in range that's interactable
+                if (currTarget != null)
+                {
+                    currTarget.OnEndHover();
+                    currTarget = null;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            //looking at no objects at all
+            if (currTarget != null)
+            {
+                currTarget.OnEndHover();
+                currTarget = null;
+                return;
             }
         }
     }
