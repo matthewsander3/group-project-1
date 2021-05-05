@@ -10,7 +10,11 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
 
     private float height;
     private float speed = 5f;
+<<<<<<< HEAD
     Vector3 curPos ;
+=======
+    Vector3 curPos;
+>>>>>>> Matt3
     Vector3 tempPos;
     Vector3 origPos;
 
@@ -36,7 +40,11 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 {
                     Debug.Log("Ending the loop");
                     ending = false;
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> Matt3
                 }
             }
             else
@@ -47,11 +55,19 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 transform.position = tempPos;
             }
         }
+<<<<<<< HEAD
    }
     public void OnStartHover()
     {
         Debug.Log("yeet ");
       
+=======
+    }
+    public void OnStartHover()
+    {
+        Debug.Log("yeet ");
+
+>>>>>>> Matt3
     }
     public void OnInteract()
     {
@@ -61,19 +77,34 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
 
     IEnumerator Float()
     {
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> Matt3
         floating = true;
         yield return new WaitForSeconds(3);
         ending = true;
         yield return new WaitForSeconds(1);
         floating = false;
+<<<<<<< HEAD
       //  transform.position = origPos;
+=======
+        //  transform.position = origPos;
+>>>>>>> Matt3
     }
     public void OnEndHover()
     {
         Debug.Log("going out");
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> Matt3
     }
 
 
 }
+
+
+
