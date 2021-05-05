@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloatOnInteract : MonoBehaviour, IInteractable
 {
@@ -14,9 +15,9 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
     Vector3 tempPos;
     Vector3 origPos;
 
-    GameController gc;
+    public GameController gc;
     private int cost = 15;
-    private int scaredVal = 20;
+    [SerializeField]private int scaredVal = 15;
     bool floating = false;
     bool ending = false;
     bool scared = false;
@@ -25,6 +26,10 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
     public int redCol, blueCol, greenCol;
     public bool flashingIn = false;
     public bool lookingAt;
+
+    [SerializeField] private Text scareText;
+    public Slider scareSlider;
+    public GameObject waifu;
 
     [SerializeField] private GameObject interactable;
 
@@ -96,7 +101,7 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
 
     public void OnStartHover()
     {
-        Debug.Log("yeet ");
+       
         lookingAt = true;
         interactable.SetActive(true);
         gameObject.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
@@ -107,23 +112,17 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
     {
         StartCoroutine("Float");
         GameController.cost = cost;
-        //didScared()           call this function to see if you scared the person and if yes then change scared bool to true
-        if (scared)             //
+
+        waifu = GameObject.FindWithTag("Enemy");
+        float distFromWaifu = Vector3.Distance(waifu.transform.position, gameObject.transform.position);
+        if(distFromWaifu <= 10)
         {
-            Debug.Log("In range!");
-            GameController.scareVal = scaredVal;
-            scared = false;
+            Debug.Log("SCARED");
+            GameController.cost -= scaredVal;
+            scareSlider.value += scaredVal;
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        scared = true;
-    }
 
-    public void didScare()
-    {
-        //if()
     }
 
     IEnumerator Float()

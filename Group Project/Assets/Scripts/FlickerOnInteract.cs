@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlickerOnInteract : MonoBehaviour, IInteractable
 {
@@ -11,10 +12,18 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     public bool flashingIn = false;
     public bool lookingAt;
 
+    [SerializeField] private int scaredVal = 15;
+
+    public Slider scareSlider;
+    public GameObject waifu;
+
+    [SerializeField] private GameObject interactable;
+
     public void OnStartHover()
     {
         //enable interact UI
         //Debug.Log("Hovered over flickerable.");
+        interactable.SetActive(true);
         lookingAt = true;
         gameObject.GetComponentInParent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
         StartCoroutine("OnLookFlash");
@@ -25,6 +34,15 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     {
         //make the selected light flicker
         StartCoroutine("Flicker");
+
+        waifu = GameObject.FindWithTag("Enemy");
+        float distFromWaifu = Vector3.Distance(waifu.transform.position, gameObject.transform.position);
+        if (distFromWaifu <= 10)
+        {
+            GameController.cost -= scaredVal;
+            Debug.Log("SCARED");
+            scareSlider.value += scaredVal;
+        }
         //throw new System.NotImplementedException();
     }
 
@@ -32,11 +50,15 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     {
         //disable interact UI
         //Debug.Log("Not hovered over flickerable.");
+        interactable.SetActive(false);
         lookingAt = false;
         StopCoroutine("OnLookFlash");
         gameObject.GetComponentInParent<Renderer>().material.color = new Color32(255, 255, 255, 255);
         //throw new System.NotImplementedException();
     }
+
+
+
 
     IEnumerator OnLookFlash()
     {

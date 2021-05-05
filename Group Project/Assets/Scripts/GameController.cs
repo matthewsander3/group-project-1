@@ -20,11 +20,16 @@ public class GameController : MonoBehaviour
     [SerializeField] private int energy;
     [SerializeField] private Slider energySlider;
 
+    [SerializeField] private Text scareText;
+    public Slider scareSlider;
+
     bool paused = false;
     [SerializeField] private Text timerText;
     [SerializeField] private Text energyText;
+    
     public GameObject dead;
     public GameObject alive;
+    public GameObject win;
     public GameObject panel;
     public GameObject interactable;
 
@@ -40,11 +45,13 @@ public class GameController : MonoBehaviour
         health = PlayerPrefs.GetInt("PlayerHealth", 100);
         speed = PlayerPrefs.GetInt("PlayerSpeed", 10);
 
+        win.SetActive(false);
         dead.SetActive(false);
         panel.SetActive(false);
         StartCoroutine("CountDown");
         StartCoroutine("EnergyManagement");
     }
+
 
     IEnumerator EnergyManagement()
     {
@@ -174,8 +181,23 @@ public class GameController : MonoBehaviour
             GameToDeath();
         }
 
+        if(scareSlider.value == 100)
+        {
+            GameToWin();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseUnpause();
+        }
+
     }
 
+
+    public void GameToWin() 
+        {
+        win.SetActive(true);
+        } 
 
     public void MenuToGame()
     {
@@ -191,7 +213,10 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void DeathToGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
