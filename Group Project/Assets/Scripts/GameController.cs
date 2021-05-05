@@ -26,9 +26,10 @@ public class GameController : MonoBehaviour
     public GameObject dead;
     public GameObject alive;
     public GameObject panel;
+    public GameObject interactable;
 
-    public int cost;
-    public int scareVal;
+    static public int cost;
+    static public int scareVal;
 
     //[SerializeField] private Text healthText;
 
@@ -75,7 +76,7 @@ public class GameController : MonoBehaviour
                 yield break;
                 
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             energySlider.value = energy;
             energy--;
         }
@@ -89,6 +90,16 @@ public class GameController : MonoBehaviour
         Debug.Log("STOPPED");
         while (energy > 0)
         {
+            if (cost != 0)
+            {
+                energy -= cost;
+                cost = 0;
+            }
+            if (scareVal != 0)
+            {
+                energy += scareVal;
+                scareVal = 0;
+            }
             if (energy >= 26)
             {
                 StartCoroutine("EnergyManagement");
@@ -104,16 +115,6 @@ public class GameController : MonoBehaviour
 
         }
         GameToDeath();
-    }
-
-    public void costValue(int energyCost)
-    {
-        cost = energyCost;
-    } 
-    
-    public void scareValue(int energyCost)
-    {
-        scareVal = energyCost;
     }
 
     IEnumerator CountDown()

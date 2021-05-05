@@ -7,10 +7,12 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     public float MaxRange { get { return maxRange; } }
 
     private const float maxRange = 10f;
-
+    public GameObject interactives;
+    private int cost = 10;
     public void OnStartHover()
     {
         //enable interact UI
+        //interactives.SetActive(true);
         Debug.Log("Hovered over flickerable.");
         //throw new System.NotImplementedException();
     }
@@ -19,12 +21,14 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     {
         //make the selected light flicker
         StartCoroutine("Flicker");
+        GameController.cost = cost;
         //throw new System.NotImplementedException();
     }
 
     public void OnEndHover()
     {
         //disable interact UI
+        //interactives.SetActive(true);
         Debug.Log("Not hovered over flickerable.");
         //throw new System.NotImplementedException();
     }
