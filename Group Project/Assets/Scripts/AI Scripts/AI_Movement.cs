@@ -9,7 +9,7 @@ public class AI_Movement : MonoBehaviour
     private int destPoint;
     Animator anim;
     private NavMeshAgent nav;
-    private bool shouldMove = true;
+    public bool shouldMove = true;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -19,10 +19,12 @@ public class AI_Movement : MonoBehaviour
     }
     void Update()
     {
-        if (this.shouldMove)
+        if (!(this.shouldMove))
         {
-            Move();
+            return;
         }
+
+        Move();
     }
     void Move()
     {
@@ -62,6 +64,8 @@ int excludeRandom(int x, int y, int z)
     while (num == z)
         num = Random.Range(x, y);
     return num;
-    }
 }
+
+}
+
 
