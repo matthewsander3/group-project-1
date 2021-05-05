@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials/FS013.meta
 guid: 6b890a1ea1ef78947b13fcc27c8ab55a
 =======
@@ -7,6 +8,18 @@ guid: 417b581bd27c0e54eb67bba79148b111
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
+=======
+<<<<<<< HEAD:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials/FS013/FS013_Night_Moonless.mat.meta
+guid: 56c9ed5ee739a324e8d8bdb9613f4890
+NativeFormatImporter:
+=======
+guid: 417b581bd27c0e54eb67bba79148b111
+folderAsset: yes
+DefaultImporter:
+>>>>>>> Jonn2:Group Project/Assets/Scripts/AI Scripts.meta
+  externalObjects: {}
+  mainObjectFileID: 0
+>>>>>>> Jonn2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
