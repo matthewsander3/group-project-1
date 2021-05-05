@@ -110,8 +110,15 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
         //didScared()           call this function to see if you scared the person and if yes then change scared bool to true
         if (scared)             //
         {
+            Debug.Log("In range!");
             GameController.scareVal = scaredVal;
+            scared = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        scared = true;
     }
 
     public void didScare()
