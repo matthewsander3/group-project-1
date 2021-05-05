@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials/FS013.meta
 guid: 6b890a1ea1ef78947b13fcc27c8ab55a
 =======
 guid: 417b581bd27c0e54eb67bba79148b111
 >>>>>>> Jonn2:Group Project/Assets/Scripts/AI Scripts.meta
+=======
+<<<<<<< HEAD:Group Project/Assets/Scripts/AI Scripts.meta
+guid: 09933be2a77aed14db400a3d5d6f71d0
+=======
+guid: f11fc5ca5a0603d4f96f98c92e7cb7f2
+>>>>>>> Matt3:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials/FS013.meta
+>>>>>>> origin/Test
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

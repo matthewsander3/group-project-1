@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials.meta
 guid: 6ae9b912637e9614a87ee13a76a4f92c
 =======
@@ -9,6 +10,13 @@ guid: 9ae9a043594a6d741a2956119b230b43
 =======
 guid: 381e18e500205f34b80427625a8e9258
 >>>>>>> Jonn2:Group Project/Assets/Scenes/main.meta
+=======
+<<<<<<< HEAD:Group Project/Assets/Scenes/main.meta
+guid: b31a906825aca184a8ae9fa958514bf8
+=======
+guid: e0454b514da2ecd429e000f40050d4fa
+>>>>>>> Matt3:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials.meta
+>>>>>>> origin/Test
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

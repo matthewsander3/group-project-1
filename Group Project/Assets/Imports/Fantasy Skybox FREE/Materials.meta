@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials.meta
 guid: e0454b514da2ecd429e000f40050d4fa
 =======
 guid: 381e18e500205f34b80427625a8e9258
 >>>>>>> Jonn2:Group Project/Assets/Scenes/main.meta
+=======
+<<<<<<< HEAD:Group Project/Assets/Scenes/main.meta
+guid: 01450d1a1065d7e4f9af1750456f6d14
+=======
+guid: e0454b514da2ecd429e000f40050d4fa
+>>>>>>> Matt3:Group Project/Assets/Imports/Fantasy Skybox FREE/Materials.meta
+>>>>>>> origin/Test
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
