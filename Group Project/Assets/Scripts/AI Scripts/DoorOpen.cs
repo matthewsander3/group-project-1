@@ -5,10 +5,12 @@ using UnityEngine;
 public class DoorOpen : MonoBehaviour
 {
     public AudioSource audioSource;
+    public AudioSource audioSource2;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource2 = GetComponent<AudioSource>();
     }
     void OnCollisionEnter(Collision col)
     {
@@ -25,6 +27,7 @@ public class DoorOpen : MonoBehaviour
         Debug.Log("UNHIT");
         OpenDoor();
         transform.Rotate(0, -90, 0, Space.Self);
+       // audioSource2.Play(0);
     }
 
     IEnumerator OpenDoor()

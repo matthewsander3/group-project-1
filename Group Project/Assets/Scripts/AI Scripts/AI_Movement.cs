@@ -10,12 +10,20 @@ public class AI_Movement : MonoBehaviour
     Animator anim;
     private NavMeshAgent nav;
     public bool shouldMove = true;
+    public GameObject player;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponent<Animator>();
         prevPoint = Random.Range(1, Waypoints.points.Length);
         GoToNextPoint();
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+        }
     }
     void Update()
     {
