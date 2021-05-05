@@ -7,13 +7,17 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     public float MaxRange { get { return maxRange; } }
 
     private const float maxRange = 10f;
-    public GameObject interactives;
-    private int cost = 10;
+    public int redCol, blueCol, greenCol;
+    public bool flashingIn = false;
+    public bool lookingAt;
+
     public void OnStartHover()
     {
         //enable interact UI
-        //interactives.SetActive(true);
-        Debug.Log("Hovered over flickerable.");
+        //Debug.Log("Hovered over flickerable.");
+        lookingAt = true;
+        gameObject.GetComponentInParent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        StartCoroutine("OnLookFlash");
         //throw new System.NotImplementedException();
     }
 
@@ -21,16 +25,53 @@ public class FlickerOnInteract : MonoBehaviour, IInteractable
     {
         //make the selected light flicker
         StartCoroutine("Flicker");
-        GameController.cost = cost;
         //throw new System.NotImplementedException();
     }
 
     public void OnEndHover()
     {
         //disable interact UI
-        //interactives.SetActive(true);
-        Debug.Log("Not hovered over flickerable.");
+        //Debug.Log("Not hovered over flickerable.");
+        lookingAt = false;
+        StopCoroutine("OnLookFlash");
+        gameObject.GetComponentInParent<Renderer>().material.color = new Color32(255, 255, 255, 255);
         //throw new System.NotImplementedException();
+    }
+
+    IEnumerator OnLookFlash()
+    {
+        while(lookingAt == true)
+        {
+            yield return new WaitForSeconds(0.05f);
+            if(flashingIn)
+            {
+                if(blueCol <= 30)
+                {
+                    flashingIn = false;
+                }
+                else
+                {
+                    blueCol -= 25;
+                    redCol -= 25;
+                    //greenCol -= 25;
+                }
+            }
+
+            if(!flashingIn)
+            {
+                if (blueCol >= 250)
+                {
+                    flashingIn = true;
+                }
+                else
+                {
+                    blueCol += 25;
+                    redCol += 25;
+                    //greenCol += 25;
+                }
+            }
+            gameObject.GetComponentInParent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        }
     }
 
     IEnumerator Flicker()
