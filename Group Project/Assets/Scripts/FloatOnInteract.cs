@@ -10,20 +10,29 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
 
     private float height;
     private float speed = 5f;
-    Vector3 curPos ;
+    Vector3 curPos;
     Vector3 tempPos;
     Vector3 origPos;
 
     GameController gc;
-    private int cost = 10;
+    private int cost = 15;
+    private int scaredVal = 20;
     bool floating = false;
     bool ending = false;
+    bool scared = false;
     int i = 0;
+
+    public int redCol, blueCol, greenCol;
+    public bool flashingIn = false;
+    public bool lookingAt;
+
+    [SerializeField] private GameObject interactable;
 
     public void Start()
     {
         curPos = transform.position;
         origPos = curPos;
+        //interactable = GetComponent<GameController>().interactable; 
     }
 
     public void Update()
@@ -36,7 +45,7 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 {
                     Debug.Log("Ending the loop");
                     ending = false;
-                    
+
                 }
             }
             else
@@ -47,33 +56,97 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 transform.position = tempPos;
             }
         }
-   }
+    }
+
+    IEnumerator OnLookFlash()
+    {
+        while (lookingAt == true)
+        {
+            yield return new WaitForSeconds(0.05f);
+            if (flashingIn)
+            {
+                if (blueCol <= 30)
+                {
+                    flashingIn = false;
+                }
+                else
+                {
+                    blueCol -= 25;
+                    redCol -= 25;
+                    //greenCol -= 25;
+                }
+            }
+
+            if (!flashingIn)
+            {
+                if (blueCol >= 250)
+                {
+                    flashingIn = true;
+                }
+                else
+                {
+                    blueCol += 25;
+                    redCol += 25;
+                    //greenCol += 25;
+                }
+            }
+            gameObject.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        }
+    }
+
     public void OnStartHover()
     {
         Debug.Log("yeet ");
-      
+        lookingAt = true;
+        interactable.SetActive(true);
+        gameObject.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        StartCoroutine("OnLookFlash");
+
     }
     public void OnInteract()
     {
         StartCoroutine("Float");
         GameController.cost = cost;
+        //didScared()           call this function to see if you scared the person and if yes then change scared bool to true
+        if (scared)             //
+        {
+            Debug.Log("In range!");
+            GameController.scareVal = scaredVal;
+            scared = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        scared = true;
+    }
+
+    public void didScare()
+    {
+        //if()
     }
 
     IEnumerator Float()
     {
-        
+
         floating = true;
         yield return new WaitForSeconds(3);
         ending = true;
         yield return new WaitForSeconds(1);
         floating = false;
-      //  transform.position = origPos;
+        //  transform.position = origPos;
     }
     public void OnEndHover()
     {
         Debug.Log("going out");
-        
+        interactable.SetActive(false);
+        lookingAt = false;
+        StopCoroutine("OnLookFlash");
+        gameObject.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 255);
     }
 
 
 }
+
+
+
