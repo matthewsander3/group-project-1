@@ -6958,6 +6958,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4659005359025999061, guid: e3fe5072e53ed4948be9b2e3420fac72, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659005359025999061, guid: e3fe5072e53ed4948be9b2e3420fac72, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4659005359035498261, guid: e3fe5072e53ed4948be9b2e3420fac72, type: 3}
       propertyPath: m_Name
       value: PlayerChar
