@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
         //Vector3 rot = transform.localRotation.eulerAngles;
         //rotX = rot.x;
         //rotY = rot.y;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

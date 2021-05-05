@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloatOnInteract : MonoBehaviour, IInteractable
 {
@@ -10,20 +11,33 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
 
     private float height;
     private float speed = 5f;
-    Vector3 curPos ;
+    Vector3 curPos;
     Vector3 tempPos;
     Vector3 origPos;
 
-    GameController gc;
-    private int cost = 10;
+    public GameController gc;
+    private int cost = 15;
+    [SerializeField]private int scaredVal = 15;
     bool floating = false;
     bool ending = false;
+    bool scared = false;
     int i = 0;
+
+    public int redCol, blueCol, greenCol;
+    public bool flashingIn = false;
+    public bool lookingAt;
+
+    [SerializeField] private Text scareText;
+    public Slider scareSlider;
+    public GameObject waifu;
+
+    [SerializeField] private GameObject interactable;
 
     public void Start()
     {
         curPos = transform.position;
         origPos = curPos;
+        //interactable = GetComponent<GameController>().interactable; 
     }
 
     public void Update()
@@ -36,7 +50,7 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 {
                     Debug.Log("Ending the loop");
                     ending = false;
-                    
+
                 }
             }
             else
@@ -47,33 +61,91 @@ public class FloatOnInteract : MonoBehaviour, IInteractable
                 transform.position = tempPos;
             }
         }
-   }
+    }
+
+    IEnumerator OnLookFlash()
+    {
+        while (lookingAt == true)
+        {
+            yield return new WaitForSeconds(0.05f);
+            if (flashingIn)
+            {
+                if (blueCol <= 30)
+                {
+                    flashingIn = false;
+                }
+                else
+                {
+                    blueCol -= 25;
+                    redCol -= 25;
+                    //greenCol -= 25;
+                }
+            }
+
+            if (!flashingIn)
+            {
+                if (blueCol >= 250)
+                {
+                    flashingIn = true;
+                }
+                else
+                {
+                    blueCol += 25;
+                    redCol += 25;
+                    //greenCol += 25;
+                }
+            }
+            gameObject.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        }
+    }
+
     public void OnStartHover()
     {
-        Debug.Log("yeet ");
-      
+       
+        lookingAt = true;
+        interactable.SetActive(true);
+        gameObject.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+        StartCoroutine("OnLookFlash");
+
     }
     public void OnInteract()
     {
         StartCoroutine("Float");
         GameController.cost = cost;
+
+        waifu = GameObject.FindWithTag("Enemy");
+        float distFromWaifu = Vector3.Distance(waifu.transform.position, gameObject.transform.position);
+        if(distFromWaifu <= 10)
+        {
+            Debug.Log("SCARED");
+            GameController.cost -= scaredVal;
+            scareSlider.value += scaredVal;
+        }
+
+
     }
 
     IEnumerator Float()
     {
-        
+
         floating = true;
         yield return new WaitForSeconds(3);
         ending = true;
         yield return new WaitForSeconds(1);
         floating = false;
-      //  transform.position = origPos;
+        //  transform.position = origPos;
     }
     public void OnEndHover()
     {
         Debug.Log("going out");
-        
+        interactable.SetActive(false);
+        lookingAt = false;
+        StopCoroutine("OnLookFlash");
+        gameObject.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 255);
     }
 
 
 }
+
+
+

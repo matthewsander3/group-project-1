@@ -20,15 +20,21 @@ public class GameController : MonoBehaviour
     [SerializeField] private int energy;
     [SerializeField] private Slider energySlider;
 
+    [SerializeField] private Text scareText;
+    public Slider scareSlider;
+
     bool paused = false;
     [SerializeField] private Text timerText;
     [SerializeField] private Text energyText;
+    
     public GameObject dead;
     public GameObject alive;
+    public GameObject win;
     public GameObject panel;
+    public GameObject interactable;
 
     static public int cost;
-    public int scareVal;
+    static public int scareVal;
 
     //[SerializeField] private Text healthText;
 
@@ -39,11 +45,13 @@ public class GameController : MonoBehaviour
         health = PlayerPrefs.GetInt("PlayerHealth", 100);
         speed = PlayerPrefs.GetInt("PlayerSpeed", 10);
 
+        win.SetActive(false);
         dead.SetActive(false);
         panel.SetActive(false);
         StartCoroutine("CountDown");
         StartCoroutine("EnergyManagement");
     }
+
 
     IEnumerator EnergyManagement()
     {
@@ -75,7 +83,7 @@ public class GameController : MonoBehaviour
                 yield break;
                 
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             energySlider.value = energy;
             energy--;
         }
@@ -94,13 +102,16 @@ public class GameController : MonoBehaviour
                 energy -= cost;
                 cost = 0;
             }
-
+            if (scareVal != 0)
+            {
+                energy += scareVal;
+                scareVal = 0;
+            }
             if (energy >= 26)
             {
                 StartCoroutine("EnergyManagement");
                 yield break;
             }
-
             energyText.color = Color.white;
             
             yield return new WaitForSeconds(1);
@@ -170,8 +181,23 @@ public class GameController : MonoBehaviour
             GameToDeath();
         }
 
+        if(scareSlider.value == 100)
+        {
+            GameToWin();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseUnpause();
+        }
+
     }
 
+
+    public void GameToWin() 
+        {
+        win.SetActive(true);
+        } 
 
     public void MenuToGame()
     {
@@ -183,9 +209,14 @@ public class GameController : MonoBehaviour
         Debug.Log("You died");
         alive.SetActive(false);
         dead.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
-
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void DeathToGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

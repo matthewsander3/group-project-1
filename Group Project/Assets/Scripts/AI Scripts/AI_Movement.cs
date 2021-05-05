@@ -9,7 +9,8 @@ public class AI_Movement : MonoBehaviour
     private int destPoint;
     Animator anim;
     private NavMeshAgent nav;
-    private bool shouldMove = true;
+    public bool shouldMove = true;
+    public GameObject player;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -17,12 +18,21 @@ public class AI_Movement : MonoBehaviour
         prevPoint = Random.Range(1, Waypoints.points.Length);
         GoToNextPoint();
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+    }
     void Update()
     {
-        if (this.shouldMove)
+        if (!(this.shouldMove))
         {
-            Move();
+            return;
         }
+
+        Move();
     }
     void Move()
     {
@@ -62,6 +72,8 @@ int excludeRandom(int x, int y, int z)
     while (num == z)
         num = Random.Range(x, y);
     return num;
-    }
 }
+
+}
+
 
