@@ -183,6 +183,8 @@ public class GameController : MonoBehaviour
         Debug.Log("You died");
         alive.SetActive(false);
         dead.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
