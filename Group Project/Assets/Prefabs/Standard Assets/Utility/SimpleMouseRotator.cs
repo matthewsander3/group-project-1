@@ -21,6 +21,8 @@ namespace UnityStandardAssets.Utility
         public bool autoZeroVerticalOnMobile = true;
         public bool autoZeroHorizontalOnMobile = false;
         public bool relative = true;
+
+        GameController gameController;
         
         
         private Vector3 m_TargetAngles;
@@ -31,12 +33,22 @@ namespace UnityStandardAssets.Utility
 
         private void Start()
         {
+            if (!gameController)
+                gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
             m_OriginalRotation = transform.localRotation;
         }
 
 
         private void Update()
         {
+
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+
+            Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+            movementDirection.Normalize();
+            transform.Translate(movementDirection * gameController.speed * Time.deltaTime, Space.Self);
+
             // we make initial calculations from the original local rotation
             transform.localRotation = m_OriginalRotation;
 
