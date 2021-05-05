@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     public GameObject alive;
     public GameObject panel;
 
-    static public int cost;
+    public int cost;
     public int scareVal;
 
     //[SerializeField] private Text healthText;
@@ -57,30 +57,30 @@ public class GameController : MonoBehaviour
                 StopCoroutine("LowHealth");
                 Debug.Log("Ended low health");
             }
-            // yield return new WaitForSeconds(1);
-            if (cost != 0)
+           // yield return new WaitForSeconds(1);
+            if(cost != 0)
             {
                 energy -= cost;
                 cost = 0;
             }
-            if (scareVal != 0)
+            if(scareVal != 0)
             {
                 energy += scareVal;
                 scareVal = 0;
             }
-            if (energy <= 25)
+            if(energy <= 25)
             {
                 speed = 5;
                 StartCoroutine("LowHealth");
                 yield break;
-
+                
             }
             yield return new WaitForSeconds(1);
             energySlider.value = energy;
             energy--;
         }
 
-
+        
     }
 
     IEnumerator LowHealth()
@@ -89,20 +89,13 @@ public class GameController : MonoBehaviour
         Debug.Log("STOPPED");
         while (energy > 0)
         {
-            if (cost != 0)
-            {
-                energy -= cost;
-                cost = 0;
-            }
-
             if (energy >= 26)
             {
                 StartCoroutine("EnergyManagement");
                 yield break;
             }
-
             energyText.color = Color.white;
-
+            
             yield return new WaitForSeconds(1);
             energySlider.value = energy;
             energy--;
@@ -113,11 +106,20 @@ public class GameController : MonoBehaviour
         GameToDeath();
     }
 
+    public void costValue(int energyCost)
+    {
+        cost = energyCost;
+    } 
+    
+    public void scareValue(int energyCost)
+    {
+        scareVal = energyCost;
+    }
+
     IEnumerator CountDown()
     {
         while (meridian == endMeridian)
         {
-            Debug.Log("in timer");
             while (timerMin < 60)
             {
                 if (timerMin <= 9)
@@ -149,7 +151,7 @@ public class GameController : MonoBehaviour
                 timerHour++;
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled = false;
-        GameToDeath();
+       GameToDeath();
     }
 
 
@@ -184,6 +186,8 @@ public class GameController : MonoBehaviour
         Debug.Log("You died");
         alive.SetActive(false);
         dead.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
