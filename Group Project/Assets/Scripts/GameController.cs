@@ -26,9 +26,10 @@ public class GameController : MonoBehaviour
     public GameObject dead;
     public GameObject alive;
     public GameObject panel;
+    public GameObject interactable;
 
     static public int cost;
-    public int scareVal;
+    static public int scareVal;
 
     //[SerializeField] private Text healthText;
 
@@ -75,7 +76,7 @@ public class GameController : MonoBehaviour
                 yield break;
                 
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             energySlider.value = energy;
             energy--;
         }
@@ -94,13 +95,16 @@ public class GameController : MonoBehaviour
                 energy -= cost;
                 cost = 0;
             }
-
+            if (scareVal != 0)
+            {
+                energy += scareVal;
+                scareVal = 0;
+            }
             if (energy >= 26)
             {
                 StartCoroutine("EnergyManagement");
                 yield break;
             }
-
             energyText.color = Color.white;
             
             yield return new WaitForSeconds(1);
